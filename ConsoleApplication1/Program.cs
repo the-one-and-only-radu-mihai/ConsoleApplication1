@@ -11,10 +11,7 @@ namespace MyStack
         {
             Stack new_stack=new Stack();
             int new_value;
-            new_value = Console.Read();
-            new_stack.Push(new_value);
-            new_stack.Display();
-            new_value = Console.Read();
+            new_value = Int32.Parse(Console.ReadLine());
             new_stack.Push(new_value);
             new_stack.Display();
 

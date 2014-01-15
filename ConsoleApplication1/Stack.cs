@@ -42,33 +42,41 @@ namespace ConsoleApplication1
                 stack[i] = objectToPush;
                 Length++;
             }
-            else Console.WriteLine("Stack is full");
+            else
+            {
+                int[] a = new int[Capacity * 2];
+                for (int i = 0; i < Capacity; i++)
+                    a[i] = stack[i];
+                stack = a;
+            }
         }
 
         public int Pull()
         {
-            if(!IsEmpty())
+            if (!IsEmpty())
             {
                 Length--;
+                return stack[Length];
+
             }
-            else Console.WriteLine("Stack is empty");
-            return 0;
+            else
+            {
+                Console.WriteLine("Stack is empty");
+                return 0;
+            }
         }
 
         public void Clear()
         {
-            while (!IsEmpty())
-            {
-                Length--;
-            }
+            Length = 0;
+
         }
         public void Display()
         {
             int i=0;
-            while(i<Length)
+            while(i < Length)
             {
                 Console.Write(stack[i]);
-                Console.Write(" ");
                 Console.Write("\n");
                 i++;
             }
