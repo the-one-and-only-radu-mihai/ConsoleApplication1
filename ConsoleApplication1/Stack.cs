@@ -24,7 +24,7 @@ namespace ConsoleApplication1
         }
         public Stack() 
         {
-            stack=int[10];
+            stack=new int[10];
             Length = 0;
             Capacity = 10;
         }
@@ -36,17 +36,31 @@ namespace ConsoleApplication1
 
         public void Push(int objectToPush)
         {
-            throw new NotImplementedException();
+            if (Length < Capacity)
+            {
+                int i=Length;
+                stack[i] = objectToPush;
+                Length++;
+            }
+            else Console.WriteLine("Stack is full");
         }
 
         public int Pull()
         {
-            throw new NotImplementedException();
+            if(!IsEmpty())
+            {
+                Length--;
+            }
+            else Console.WriteLine("Stack is empty");
+            return 0;
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            while (!IsEmpty())
+            {
+                Length--;
+            }
         }
     }
 }
