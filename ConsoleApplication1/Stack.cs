@@ -14,17 +14,24 @@ namespace ConsoleApplication1
         {
             get;
             set;
-        }
 
+        }
+        
         public int Capacity
         {
             get;
             set;
         }
-
+        public Stack() 
+        {
+            stack=int[10];
+            Length = 0;
+            Capacity = 10;
+        }
         public bool IsEmpty()
         {
-            throw new NotImplementedException();
+            return Length == 0;
+
         }
 
         public void Push(int objectToPush)
