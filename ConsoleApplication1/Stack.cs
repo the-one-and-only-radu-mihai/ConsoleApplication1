@@ -8,7 +8,7 @@ namespace ConsoleApplication1
 {
     class Stack : IStack
     {
-        int[] stack;
+      int[] stack;
 
         public int Length
         {
@@ -62,5 +62,17 @@ namespace ConsoleApplication1
                 Length--;
             }
         }
+        public void Display()
+        {
+            int i=0;
+            while(i<Length)
+            {
+                Console.Write(stack[i]);
+                Console.Write(" ");
+                Console.Write("\n");
+                i++;
+            }
+        }
     }
+
 }
