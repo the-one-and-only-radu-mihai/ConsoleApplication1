@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime;
 
 namespace ConsoleApplication1
 {
-    class Stack : IStack
+   public class Stack : IStack, IEnumerable
     {
-      int[] stack;
+      float[] stack;
 
         public int Length
         {
@@ -24,7 +25,7 @@ namespace ConsoleApplication1
         }
         public Stack() 
         {
-            stack=new int[10];
+            stack=new float[10];
             Length = 0;
             Capacity = 10;
         }
@@ -34,7 +35,7 @@ namespace ConsoleApplication1
 
         }
 
-        public void Push(int objectToPush)
+        public void Push(float objectToPush)
         {
             if (Length < Capacity)
             {
@@ -44,14 +45,17 @@ namespace ConsoleApplication1
             }
             else
             {
-                int[] a = new int[Capacity * 2];
+                float[] a = new float[Capacity * 2];
                 for (int i = 0; i < Capacity; i++)
                     a[i] = stack[i];
                 stack = a;
+                
+                stack[Length] = objectToPush;
+                Capacity *= 2;
             }
         }
 
-        public int Pull()
+        public float Pull()
         {
             if (!IsEmpty())
             {
@@ -81,6 +85,35 @@ namespace ConsoleApplication1
                 i++;
             }
         }
-    }
+        public IEnumerator GetEnumerator()
+        {
+            return stack.GetEnumerator();
+        }
 
-}
+       
+        public bool MoveNext()
+        {
+            Length++;
+            return (Length < Capacity);
+        }
+        public object Current
+        {
+            get { return stack[Length]; }
+
+        }
+        public void Reset()
+        { Length = 0; }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return stack.GetEnumerator();
+        }
+       public float this[int i]
+        {
+            get { return stack[i]; }
+           
+        }
+    }
+   }
+
+

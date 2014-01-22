@@ -10,8 +10,8 @@ namespace ConsoleApplication1
             int Length { get; set; }
             int Capacity { get; set; }
             bool IsEmpty();
-            void Push(int objectToPush);
-            int Pull();
+            void Push(float objectToPush);
+            float Pull();
             void Clear();
         }
     
